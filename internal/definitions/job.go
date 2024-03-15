@@ -8,9 +8,9 @@ type JobService interface {
 // Job tracks jobs in the system
 // model: true
 type Job struct {
-	Kind     string        `json:"kind" bson:"kind"`
+	Kind     string        `json:"kind" bson:"kind" grimoire:"index"`
 	Args     string        `json:"args" bson:"args"`
-	Status   string        `json:"status" bson:"status"`
+	Status   string        `json:"status" bson:"status" grimoire:"index"`
 	Queue    string        `json:"queue" bson:"queue"`
 	Attempts []*JobAttempt `bson:"attempts" json:"attempts"`
 }

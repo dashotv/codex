@@ -5,6 +5,7 @@ go 1.21.6
 require (
 	github.com/caarlos0/env/v10 v10.0.0
 	github.com/dashotv/grimoire v0.5.1
+	github.com/dashotv/minion v0.3.3
 	github.com/dotenv-org/godotenvvault v0.6.0
 	github.com/go-cmd/cmd v1.4.2
 	github.com/go-resty/resty/v2 v2.11.0
@@ -23,7 +24,6 @@ require (
 require (
 	github.com/MicahParks/keyfunc/v2 v2.1.0 // indirect
 	github.com/blendle/zapdriver v1.3.1 // indirect
-	github.com/dashotv/minion v0.3.3 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/felixge/httpsnoop v1.0.3 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect

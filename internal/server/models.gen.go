@@ -58,9 +58,9 @@ type File struct { // model
 	//ID        primitive.ObjectID `bson:"_id,omitempty" json:"id"`
 	//CreatedAt time.Time          `bson:"created_at" json:"created_at"`
 	//UpdatedAt time.Time          `bson:"updated_at" json:"updated_at"`
-	Path       string `json:"path" bson:"path" grimoire:"index" `
+	Path       string `grimoire:"index" json:"path" bson:"path" `
 	Size       int64  `json:"size" bson:"size" `
-	ModifiedAt int64  `bson:"modified_at" grimoire:"index" json:"modified_at" `
+	ModifiedAt int64  `json:"modified_at" bson:"modified_at" grimoire:"index" `
 }
 
 type FilesResponse struct {
@@ -81,9 +81,9 @@ type Job struct { // model
 	//ID        primitive.ObjectID `bson:"_id,omitempty" json:"id"`
 	//CreatedAt time.Time          `bson:"created_at" json:"created_at"`
 	//UpdatedAt time.Time          `bson:"updated_at" json:"updated_at"`
-	Kind     string        `json:"kind" bson:"kind" `
+	Kind     string        `json:"kind" bson:"kind" grimoire:"index" `
 	Args     string        `json:"args" bson:"args" `
-	Status   string        `json:"status" bson:"status" `
+	Status   string        `bson:"status" grimoire:"index" json:"status" `
 	Queue    string        `json:"queue" bson:"queue" `
 	Attempts []*JobAttempt `bson:"attempts" json:"attempts" `
 }
