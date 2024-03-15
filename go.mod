@@ -11,7 +11,6 @@ require (
 	github.com/go-resty/resty/v2 v2.11.0
 	github.com/labstack/echo/v4 v4.11.4
 	github.com/pkg/errors v0.9.1
-	github.com/robfig/cron/v3 v3.0.1
 	github.com/samber/lo v1.39.0
 	github.com/streamingfast/logging v0.0.0-20230608130331-f22c91403091
 	go.infratographer.com/x v0.3.9
@@ -48,6 +47,7 @@ require (
 	github.com/montanaflynn/stats v0.7.1 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.8 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
+	github.com/robfig/cron/v3 v3.0.1 // indirect
 	github.com/spf13/afero v1.9.5 // indirect
 	github.com/spf13/cast v1.5.1 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
