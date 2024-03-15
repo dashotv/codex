@@ -38,8 +38,8 @@ type counter struct {
 
 func (c *counter) Inc() {
 	c.Lock()
+	defer c.Unlock()
 	c.v++
-	c.Unlock()
 }
 
 func (w *Walker) Walk() error {
@@ -72,9 +72,7 @@ func (w *Walker) Walk() error {
 	for i := 0; i < 10; i++ {
 		eg.Go(func() error {
 			for line := range w.files {
-				c.Lock()
-				c.v++
-				c.Unlock()
+				c.Inc()
 				if err := w.updateFile(line); err != nil {
 					return err
 				}

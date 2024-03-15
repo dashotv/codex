@@ -51,9 +51,11 @@ func New() (*Server, error) {
 	setupRouter(s)
 
 	file := &fileService{log: logger.Named("services.file"), bg: s.bg, db: s.db}
+	job := &jobService{log: logger.Named("services.file"), bg: s.bg, db: s.db}
 
 	g := s.Router.Group("/api")
 	RegisterFileService(g, file)
+	RegisterJobService(g, job)
 
 	return s, nil
 }
