@@ -8,11 +8,20 @@ import (
 	"github.com/dashotv/minion"
 )
 
-func startWorkers(_ context.Context, s *Server) error {
+func startWorkers(ctx context.Context, s *Server) error {
+	ctx, cancel := context.WithCancel(ctx)
+	defer cancel()
+
 	go func() {
 		// s.Logger.Infof("starting workers (%d)...", s.Config.MinionConcurrency)
-		s.bg.Start()
+		if err := s.bg.Start(); err != nil {
+			s.Logger.Errorf("starting workers: %s", err)
+			return
+		}
+
+		<-ctx.Done()
 	}()
+
 	return nil
 }
 

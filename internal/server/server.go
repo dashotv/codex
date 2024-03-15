@@ -1,10 +1,10 @@
 package server
 
 import (
+	"context"
 	"os"
 
 	"github.com/labstack/echo/v4"
-	"github.com/robfig/cron/v3"
 	"github.com/streamingfast/logging"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
@@ -18,7 +18,6 @@ type Server struct {
 	Config *Config
 
 	Router *echo.Echo
-	Cron   *cron.Cron
 	Logger *zap.SugaredLogger
 	Plex   *plex.Client
 
@@ -60,9 +59,7 @@ func New() (*Server, error) {
 }
 
 func (s *Server) Start() error {
-	if s.Cron != nil {
-		go s.Cron.Run()
-	}
+	startWorkers(context.Background(), s)
 
 	count, err := s.db.File.Query().Count()
 	if err != nil {
