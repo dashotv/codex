@@ -1,0 +1,54 @@
+version: "3"
+
+dotenv:
+  - .env
+
+tasks:
+  deps:
+    desc: "install all dependencies"
+    cmds:
+      - go install github.com/pacedotdev/oto@latest
+      - go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+
+  build:
+    desc: "build the compiled binary"
+    deps:
+      - gen
+    cmds:
+      - go build .
+
+  test:
+    desc: "run all unit tests"
+    cmds:
+      - go test -v ./...
+
+  lint:
+    desc: "lint the code"
+    cmds:
+      - golangci-lint run
+
+  run:
+    desc: "runs our app and any dependencies defined within the docker-compose.yml"
+    cmds:
+      - go run .
+
+  mod:
+    desc: "update the dependencies"
+    cmds:
+      - go get -u
+      - go mod tidy
+
+  gen:
+    desc: "generate the code"
+    cmds:
+      - scripts/generate.sh
+
+  dotenv:
+    desc: "create the .env.vault file"
+    cmds:
+      - npx dotenv-vault local build
+
+  clean:
+    desc: "remove the database"
+    cmds:
+      - rm -f codex
